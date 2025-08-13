@@ -1,0 +1,79 @@
+@import "tailwindcss";
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+   font-family: 'Poppins', sans-serif;
+
+  line-height: 1.6;
+  
+  
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  background-color: hsl(48, 100%, 98%); /* Very light creamy yellow */
+  color: hsl(220, 20%, 20%);            /* Deep slate for text *//* near-black for good contrast */
+  display: flex;
+  flex-direction: column;
+}
+/* Effects.css */
+.bubbles-container {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  z-index: 0; /* ensure behind content, set your content's z-index > 0 */
+  pointer-events: none; /* allow clicks through bubbles */
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(10,11,13,0.6), rgba(17,24,39,0.6)); /* optional subtle overlay */
+}
+
+/* single bubble */
+.bubble {
+  position: absolute;
+  bottom: -160px; /* start slightly off-screen */
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.06) 40%),
+              rgba(255,255,255,0.02);
+  box-shadow: 0 6px 30px rgba(2,6,23,0.6), inset 0 1px 3px rgba(255,255,255,0.02);
+  transform: translateY(0) translateX(0);
+  will-change: transform, opacity;
+  mix-blend-mode: screen;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* animation: float upward and drift horizontally */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  45% {
+    transform: translateY(-40vh) translateX(20px);
+  }
+  85% {
+    transform: translateY(-110vh) translateX(-10px);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-140vh) translateX(-30px);
+    opacity: 0;
+  }
+}
+
+/* make sure the rest of your site content sits above the bubbles.
+   If your layout uses z-index, set .site-content { position: relative; z-index: 10 } */
+
+
+
+
+
